@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from cimema.models import (
+from cinema.models import (
     CinemaHall,
     Genre,
     Actor,
