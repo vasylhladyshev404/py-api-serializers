@@ -44,8 +44,8 @@ class ActorSerializer(serializers.ModelSerializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
-    genres = GenreSerializer(many=True, read_only=True)
-    actors = ActorSerializer(many=True, read_only=True)
+    genres = GenreSerializer(many=True)
+    actors = ActorSerializer(many=True)
 
     class Meta:
         model = Movie
@@ -85,13 +85,6 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 
 class MovieSessionSerializer(serializers.ModelSerializer):
-    cinema_hall = CinemaHallSerializer(
-        many=False
-    )
-    movie = MovieListSerializer(
-        many=False
-    )
-
     class Meta:
         model = MovieSession
         fields = "__all__"
