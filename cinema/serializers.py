@@ -28,6 +28,8 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class ActorSerializer(serializers.ModelSerializer):
+    full_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Actor
         fields = (
@@ -36,6 +38,9 @@ class ActorSerializer(serializers.ModelSerializer):
             "last_name",
             "full_name"
         )
+
+    def get_full_name(self, obj):
+        return f"{obj.first_name} {obj.last_name}"
 
 
 class MovieSerializer(serializers.ModelSerializer):
@@ -52,6 +57,11 @@ class MovieSerializer(serializers.ModelSerializer):
             "genres",
             "actors"
         )
+
+    def validate_duration(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("Duration must be positive")
+        return value
 
 
 class MovieListSerializer(serializers.ModelSerializer):
@@ -76,12 +86,10 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 class MovieSessionSerializer(serializers.ModelSerializer):
     cinema_hall = CinemaHallSerializer(
-        many=False,
-        read_only=True
+        many=False
     )
     movie = MovieListSerializer(
-        many=False,
-        read_only=True
+        many=False
     )
 
     class Meta:
