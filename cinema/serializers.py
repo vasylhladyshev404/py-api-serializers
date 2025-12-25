@@ -98,12 +98,12 @@ class MovieSessionListSerializer(serializers.ModelSerializer):
         many=False,
         read_only=True
     )
-    movie_title = serializers.CharField(sourse="movie.title")
+    movie_title = serializers.CharField(source="movie.title")
     cinema_hall_name = serializers.CharField(
-        sourse="cinema_hall.name"
+        source="cinema_hall.name"
     )
     cinema_hall_capacity = serializers.CharField(
-        sourse="cinema_hall.capacity"
+        source="cinema_hall.capacity"
     )
 
     class Meta:
