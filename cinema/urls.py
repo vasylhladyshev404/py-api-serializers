@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from cimena.views import (
+from cinema.views import (
     MovieViewSet,
     ActorViewSet,
     GenreViewSet,
