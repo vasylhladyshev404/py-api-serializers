@@ -96,7 +96,7 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field="name"
     )
-    actors = ActorSerializer(many=True, read_only=True)
+    actors = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Movie
