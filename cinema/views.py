@@ -37,7 +37,7 @@ class ActorViewSet(viewsets.ModelViewSet):
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-    queryset = Movie.objects
+    queryset = Movie.objects.all()
     serializer_class = MovieSerializer
 
     def get_queryset(self) -> QuerySet[Movie]:
@@ -55,7 +55,7 @@ class MovieViewSet(viewsets.ModelViewSet):
 
 
 class MovieSessionViewSet(viewsets.ModelViewSet):
-    queryset = MovieSession.objects
+    queryset = MovieSession.objects.all()
     serializer_class = MovieSessionSerializer
 
     def get_queryset(self) -> QuerySet[MovieSession]:
