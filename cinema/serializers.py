@@ -89,7 +89,7 @@ class MovieListSerializer(serializers.ModelSerializer):
             "actors",
         )
 
-    def get_actors(self, obj):
+    def get_actors(self, obj: Movie) -> list[str]:
         return [
             f"{actor.first_name} {actor.last_name}"
             for actor in obj.actors.all()
@@ -157,7 +157,7 @@ class MovieInSessionSerializer(serializers.ModelSerializer):
             "actors",
         )
 
-    def get_actors(self, obj):
+    def get_actors(self, obj: Movie) -> list[str]:
         return [
             f"{actor.first_name} {actor.last_name}"
             for actor in obj.actors.all()
